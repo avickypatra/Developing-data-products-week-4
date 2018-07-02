@@ -1,0 +1,54 @@
+Developing Data Products: Week 4 Assignment
+========================================================
+author: Abhishek Patra
+date: 2 July 2018
+autosize: true
+
+About The Data
+========================================================
+
+The latest data is pulled from site https://data.giss.nasa.gov/gistemp/
+There are four files in the datasets under the  "GISS Surface Temperature Analysis (GISTEMP)" tab as below :
+- Global-mean monthly, seasonal, and annual means, 1880-present, updated through most recent month
+- Northern Hemisphere-mean monthly, seasonal, and annual means, 1880-present, updated through most recent month
+- Southern Hemisphere-mean monthly, seasonal, and annual means, 1880-present, updated through most recent month
+- Zonal annual means, 1880-present, updated through most recent complete year
+
+
+You can find the source code at my GitHub page https://github.com/avickypatra/Developing-data-products-week-4/tree/master
+
+The Code
+========================================================
+
+```{r}
+library(shiny)
+library(ggplot2)
+
+# Read Data
+GlobalData <- GlobalData <- read.csv("GLB.Ts.csv",stringsAsFactors = F)
+str(GlobalData)
+```
+
+Application :
+========================================================
+
+URL for Shiny application is https://avickypatra10.shinyapps.io/wee4assignment/
+
+Left Panel
+- Select data options using radio buttons from North Pole, South Pole or Global Data.
+- Select Year Range using Slider Range. Data Range contains minimum year as 1880 and maximum year as 2016.
+- Select Variable from Dataset. This is a multi select text field which contains months from January to December.
+
+Main Panel
+- Summary : This displays summary for the data as per user selection.
+- Structure : This displays Strucutre for the data as per user selection.
+- Data : This displays data frame for the user selected options.
+- Plot : This displays plot for corresponding dataframe.
+
+
+Interface
+========================================================
+Below is the application's interface.
+```{r, echo = FALSE}
+   knitr::include_graphics("interface.png")
+```
